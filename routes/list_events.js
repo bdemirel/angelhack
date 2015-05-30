@@ -30,7 +30,7 @@ router.post('/', function(req, res)
       {
         if(err)
         {
-          res.status(500).json({'err':'Error in db query!', 'code':50011};)
+          res.status(500).json({'err':'Error in db query!', 'code':50011});
         }
 
         event1.title = item.title;
