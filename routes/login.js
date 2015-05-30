@@ -15,7 +15,7 @@ route.post('/', function(req, res)
   {
     if (err)
     {
-      res.status(500).json({'err':'Error in db query!', 'code':50011}})
+      res.status(500).json({'err':'Error in db query!', 'code':50011})
     }
 
     var pword = user.pword,
@@ -27,7 +27,7 @@ route.post('/', function(req, res)
     {
       if (err)
       {
-        res.status(500).json({'err':'Error in crypto!', 'code':50021}});
+        res.status(500).json({'err':'Error in crypto!', 'code':50021});
       }
 
       if(pword = hash)
@@ -37,7 +37,7 @@ route.post('/', function(req, res)
       }
       else
       {
-        res.status(403).json({'err':'Wrong username or password!', 'code':40311}});
+        res.status(403).json({'err':'Wrong username or password!', 'code':40311});
       }
     });
 
