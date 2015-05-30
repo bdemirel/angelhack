@@ -9,7 +9,6 @@ router.use(bodyParser.json());
 router.post('/', function(req, res)
 {
   var token = req.body.token,
-      uname = req.body.username,
       titl = req.body.title,
       locn = req.body.location,
       date = req.body.date,
