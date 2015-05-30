@@ -14,7 +14,7 @@ route.post('/', function(req, res)
   {
     if (err)
     {
-      res.status(403).json({'auth':false, 'err':'Wrong username or password!'})
+      res.status(403).json({'err':'Wrong username or password!'})
     }
 
     var pword = user.pword,
@@ -32,11 +32,11 @@ route.post('/', function(req, res)
       if(pword = hash)
       {
         var token = jwt.sign({'username':username, 'usertype':utype}, uid, {'expiresInMinutes':30});
-        res.status(200).json({'auth':true, 'token':token});
+        res.status(200).json({'token':token});
       }
       else
       {
-        res.status(403).json({'auth':false, 'err':'Wrong username or password!'});
+        res.status(403).json({'err':'Wrong username or password!'});
       }
     });
 
