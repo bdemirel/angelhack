@@ -45,7 +45,7 @@ router.post('/', function(req, res)
       {
         if(err)
         {
-          res.status(500).json({'err':'Error in db query!', 'code':50012};)
+          res.status(500).json({'err':'Error in db query!', 'code':50012});
         }
 
         event1.title = item.title;
@@ -60,7 +60,7 @@ router.post('/', function(req, res)
       {
         if(err)
         {
-          res.status(500).json({'err':'Error in db query!', 'code':50013};)
+          res.status(500).json({'err':'Error in db query!', 'code':50013});
         }
 
         event1.title = item.title;
