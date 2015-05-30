@@ -13,6 +13,8 @@ route.post('/', function(req, res)
       pword = req.body.password,
       utype = req.body.email ? 1 : 0,
       email = (utype == 1) ? req.body.email : undefined;
+      phone = (utype == 1) ? req.body.phone : undefined;
+      cntry = (utype == 1) ? req.body.cntry : undefined;
 
   db.users.find({'uname':uname}).toArray(function(err, user)
   {
@@ -26,7 +28,7 @@ route.post('/', function(req, res)
       res.status(400).json({'err':'Username exists!'});
     }
 
-    db.users.insert({'fname':fname, 'lname':lname, 'uname':uname, 'utype':utype, 'email':email}, {'w':1},       function(err, doc)
+    db.users.insert({'fname':fname, 'lname':lname, 'uname':uname, 'utype':utype, 'email':email, 'phone':phone, 'cntry':cntry}, {'w':1}, function(err, doc)
     {
       if (err)
       {
