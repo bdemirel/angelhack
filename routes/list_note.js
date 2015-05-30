@@ -36,6 +36,7 @@ router.get('/', function(req, res)
       var token = jwt.sign({'username':username}, secret, {'expiresInMinutes':60});
       res.status(400).json({'token':token});
     });
+  });
 });
 
 module.exports = router;
