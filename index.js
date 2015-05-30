@@ -1,10 +1,6 @@
 var express = require('express'),
-    mongo = require('mongoskin'),
     app = express();
 
-app.get('/', function(req, res)
-{
-  res.send('Hello World');
-});
+app.use('/auth/sign', require('.routes/login.js'));
 
 app.listen('3000');
