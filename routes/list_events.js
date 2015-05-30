@@ -5,11 +5,10 @@ var router = require('express').Router(),
     bodyParser = require('body-parser'),
     secret = 'nEk5OAG5BkVNjwT3';
 
-router.use(bodyParser.json());
-router.post('/', function(req, res)
+router.get('/', function(req, res)
 {
-  var token = req.body.token,
-      time = req.body.time;
+  var token = req.query.token,
+      time = req.query.time;
 
   jwt.verify(token, secret, function(err, dec)
   {

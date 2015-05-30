@@ -5,15 +5,10 @@ var router = require('express').Router(),
     bodyParser = require('body-parser'),
     secret = 'nEk5OAG5BkVNjwT3';
 
-router.use(bodyParser.json());
-router.post('/', function(req, res)
+router.get('/', function(req, res)
 {
-  var token = req.body.token,
-      note = req.body.content,
-      auth = req.body.author,
-      titl = req.body.title,
-      topc = req.body.topic,
-      evnt = req.body.event;
+  var token = req.query.token,
+      evnt = req.query.event;
 
   jwt.verify(token, secret, function(err, dec)
   {
@@ -23,19 +18,24 @@ router.post('/', function(req, res)
     }
 
     var uname = dec.username,
-        utype = dec.usertype;
+        utype = dec.usertype,
+        notes = new array(),
+        note1 = {'title':null, 'content':null, 'author':null};
 
-    db.notes.insert({'event':evnt, 'title':titl, 'note':note, 'author':auth, 'topic':topc}, {'w':1}, function(err, doc)
+    db.notes.find({'event':evnt}).toArray(function(err, item)
     {
-      if(err)
+      if (err)
       {
         res.status(500).json({'err':'Error in db query!', 'code':50011});
       }
 
+      note1.title = item.title;
+      note1.content = item.note;
+      note1.author = item.author;
+      notes.push(note1);
       var token = jwt.sign({'username':username}, secret, {'expiresInMinutes':60});
-      res.status(200).json({'token':token});
+      res.status(400).json({'token':token});
     });
-  });
 });
 
 module.exports = router;
