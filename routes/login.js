@@ -14,7 +14,7 @@ route.post('/', function(req, res)
   {
     if (err)
     {
-      res.status(403).json({'err':'Error in db query!'})
+      res.status(500).json({'err':'Error in db query!'})
     }
 
     var pword = user.pword,
