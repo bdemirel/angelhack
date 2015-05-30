@@ -26,7 +26,7 @@ route.post('/', function(req, res)
 
     if (user.fname)
     {
-      res.status(400).json({'err':'Username exists!'}, 'code':40011});
+      res.status(400).json({'err':'Username exists!', 'code':40011});
     }
 
     db.users.insert({'fname':fname, 'lname':lname, 'uname':uname, 'utype':utype, 'email':email, 'phone':phone, 'cntry':cntry}, {'w':1}, function(err, doc)
