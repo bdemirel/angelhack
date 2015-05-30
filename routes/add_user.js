@@ -62,7 +62,7 @@ route.post('/', function(req, res)
           var token = jwt.sign({'username':uname, 'usertype':utype}, uid, {'expiresInMinutes':30});
           res.status(201).json({'token':token});
         });
-      }
+      });
     });
   });
 });
