@@ -1,12 +1,12 @@
-var route = require('express').Router(),
+var router = require('express').Router(),
     mongo = require('mongoskin'),
     db = mongo.db('mongodb://130.211.104.226:27017/nts'),
     jwt = require('jsonwebtoken'),
     bodyParser = require('body-parser'),
     secret = 'nEk5OAG5BkVNjwT3';
 
-route.use(bodyParser.json());
-route.post('/', function(req, res)
+router.use(bodyParser.json());
+router.post('/', function(req, res)
 {
   var username = req.body.username,
       password = req.body.password;
@@ -45,4 +45,4 @@ route.post('/', function(req, res)
 
 });
 
-module.exports = route;
+module.exports = router;
