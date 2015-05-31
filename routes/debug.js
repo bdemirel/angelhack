@@ -1,12 +1,18 @@
 var mongo = require('mongodb'),
 Server = mongo.Server,
+route = require('express').Router(),
     Db = mongo.Db;
 
-var db = new Db('nts', new Server('130.211.104.226', 27017));
-module.exports = db.open(function(err, db)
+route.get('/', function(req, res)
 {
-  if (err)
+  var db = new Db('nts', new Server('130.211.104.226', 27017));
+  db.open(function(err, db)
   {
-    console.log(err);
-  }
+    if (err)
+    {
+      console.log(err);
+    }
+  });
 });
+
+module.exports = route;
