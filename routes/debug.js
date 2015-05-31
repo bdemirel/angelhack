@@ -5,7 +5,7 @@ route = require('express').Router(),
 
 route.get('/', function(req, res)
 {
-  var db = new Db('nts', new Server('130.211.104.226', 27017));
+  var db = new Db('nts', new Server('130.211.104.226', 27017), {'w':1});
   db.open(function(err, db)
   {
     if (err)
