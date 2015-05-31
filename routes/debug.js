@@ -12,6 +12,12 @@ route.get('/', function(req, res)
     {
       console.log(err);
     }
+
+    db.listCollections().toArray(function(err, item)
+    {
+      console.log('coll:'+item);
+    });
+
     var coll = db.collection('events');
     coll.find().toArray(function(err, item)
     {
