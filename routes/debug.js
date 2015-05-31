@@ -12,7 +12,6 @@ route.get('/', function(req, res)
     {
       console.log(err);
     }
-
     db.listCollections().toArray(function(err, item)
     {
       console.log('coll:'+item);
