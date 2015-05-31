@@ -7,6 +7,7 @@ app.use('/event/create', require('./routes/add_event.js'));
 app.use('/event/list', require('./routes/list_events.js'));
 app.use('/note/create', require('./routes/create_note.js'));
 app.use('/note/list', require('./routes/list_note.js'));
-app.use('/event/details', require('./routes/event_details.js'))
+app.use('/event/details', require('./routes/event_details.js'));
+app.use('/debug', require('./routes/debug.js'));
 
 app.listen('3000');
