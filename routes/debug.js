@@ -12,6 +12,11 @@ route.get('/', function(req, res)
     {
       console.log(err);
     }
+    var coll = db.collection('events');
+    coll.find().toArray(function(err, item)
+    {
+      console.log(item);
+    });
   });
 });
 
