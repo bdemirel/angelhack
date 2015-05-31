@@ -20,12 +20,12 @@ router.get('/', function(req, res)
     var uname = dec.username,
         utype = dec.usertype,
         today = new Date(),
-        events = new array(),
+        events = new Array(),
         event1 = {'title':null, 'presenter':null};
 
     if(time == -1)
     {
-      db.events.find({$lt:{'date':today}}).toArray(function(err, item)
+      db.collection('events').find({'date':{$lt:today}}).toArray(function(err, item)
       {
         if(err)
         {
@@ -35,12 +35,13 @@ router.get('/', function(req, res)
         event1.title = item.title;
         event1.presenter = item.presenter;
         events.push(event1);
-        res.status(200).json(events);
+        var token = jwt.sign({'username':username}, secret, {'expiresInMinutes':60});
+        res.status(200).json({'events':events, 'token':token});
       });
     }
     else if(time == 0)
     {
-      db.events.find({'date':today}).toArray(function(err, event)
+      db.collection('events').find({'date':today}).toArray(function(err, item)
       {
         if(err)
         {
@@ -55,7 +56,7 @@ router.get('/', function(req, res)
     }
     else if(time == 1)
     {
-      db.events.find({$gt:{'date':today}}).toArray(function(err, event)
+      db.collection('events').find({'date':{$gt:today}}).toArray(function(err, item)
       {
         if(err)
         {
