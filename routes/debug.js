@@ -10,3 +10,5 @@ db.open(function(err, db)
     console.log(err);
   }
 });
+
+module.exports = db;
